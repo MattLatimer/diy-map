@@ -1,17 +1,29 @@
 var words = ["ground", "control", "to", "major", "tom"];
 
-map(words, function(word) {
+function map(arr, cb) {
+  newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    newArr.push(cb(arr[i], i, arr));
+  }
+
+  return newArr;
+}
+
+var length = map(words, function(word) {
   return word.length;
 });
 
-map(words, function(word) {
+var uppers = map(words, function(word) {
   return word.toUpperCase();
 });
 
-map(words, function(word) {
+var reversed = map(words, function(word) {
   return word.split('').reverse().join('');
 });
 
+console.log(length);
+console.log(uppers);
+console.log(reversed);
 
 // Expected Results
 //
